@@ -5,6 +5,6 @@
 
 namespace CJK {
 
-Font load_cjk_font(std::string text, std::string font_path);
+Font load_cjk_font(std::string text, int font_size, std::string font_path);
 
 };

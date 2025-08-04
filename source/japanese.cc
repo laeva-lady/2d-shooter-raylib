@@ -30,7 +30,7 @@ static int *CodepointRemoveDuplicates(int *codepoints, int codepointCount,
   return codepointsClear;
 }
 
-Font CJK::load_cjk_font(std::string text, std::string font_path) {
+Font CJK::load_cjk_font(std::string text, int font_size, std::string font_path) {
   // Get codepoints from text
   int codepointCount = 0;
   int *codepoints = LoadCodepoints(text.c_str(), &codepointCount);
@@ -42,7 +42,7 @@ Font CJK::load_cjk_font(std::string text, std::string font_path) {
   UnloadCodepoints(codepoints);
 
   // Load font containing all the provided codepoints
-  Font font = LoadFontEx(font_path.c_str(), 36, codepointsNoDuplicates,
+  Font font = LoadFontEx(font_path.c_str(), font_size, codepointsNoDuplicates,
                          codepointsNoDuplicatesCount);
 
   // Unload codepoints, atlas has already been generated

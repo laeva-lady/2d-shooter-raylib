@@ -18,7 +18,7 @@ void Bullets::SpawnBullet(Player &player, CameraM &cam) {
 }
 
 void Bullets::Update(Player &player, const Map &map, CameraM &cam) {
-  if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+  if (IsKeyDown(KEY_SPACE)) {
     SpawnBullet(player, cam);
   }
 
