@@ -4,3 +4,4 @@
 bool is_rects_colliding(Rectangle rect1, Rectangle rect2);
 bool is_circle_colliding_with_rect(Vector2 circle_pos, float circle_radius,
                                    Rectangle rect);
+RayCollision get_ray_collision_rect(Ray ray, Rectangle rect);

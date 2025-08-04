@@ -5,5 +5,7 @@
 #include "../headers/player.hpp"
 
 namespace UI {
+void Init();
 void Draw(Player *p);
+void Cleanup();
 };

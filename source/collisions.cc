@@ -26,3 +26,9 @@ bool is_circle_colliding_with_rect(Vector2 circle_pos, float circle_radius,
                                    Rectangle rect) {
   return CheckCollisionCircleRec(circle_pos, circle_radius, rect);
 }
+
+RayCollision get_ray_collision_rect(Ray ray, Rectangle rect) {
+  BoundingBox box = {{rect.x, rect.y, -1},
+                     {rect.x + rect.width, rect.y + rect.height, 1}};
+  return GetRayCollisionBox(ray, box);
+}

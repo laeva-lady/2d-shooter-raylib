@@ -12,9 +12,14 @@ Game::Game() {
   cam = new CameraM();
   map = new Map("assets/map.txt");
   mbullets = new Bullets();
+
+  UI::Init();
 }
 
-Game::~Game() { CloseWindow(); }
+Game::~Game() {
+  UI::Cleanup();
+  CloseWindow();
+}
 
 void Game::Run() {
   while (!WindowShouldClose()) {
@@ -24,9 +29,11 @@ void Game::Run() {
 }
 
 void Game::Update() {
+  float dt = GetFrameTime();
+
   player->Update(*map);
   cam->Update();
-  mbullets->Update(*player, *map, *cam);
+  mbullets->Update(*player, *map, *cam, dt);
 }
 
 void Game::Draw() {
