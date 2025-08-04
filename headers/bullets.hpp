@@ -5,8 +5,6 @@
 #include <raylib.h>
 #include <vector>
 
-const float c_default_speed_bullet = 2000;
-
 struct Bullet {
   Vector2 _pos;
   Vector2 _velocity;
@@ -23,10 +21,12 @@ Bullet new_bullet(Vector2 _pos, Vector2 _velocity, float _damage, float _radius,
 class Bullets {
 private:
   std::vector<Bullet> bullets;
-  void SpawnBullet(Player &player, CameraM &cam);
 
 public:
+  float time_since_last_bullet = 0;
+
   Bullets() {}
-  void Update(Player &player, const Map &map, CameraM &cam, float deltaTime);
+  void SpawnBullet(Player &player, CameraM &cam);
+  void Update(Player &player, const Map &map, float deltaTime);
   void Draw(CameraM &cam);
 };

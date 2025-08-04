@@ -7,7 +7,7 @@
 #include <raymath.h>
 
 Bullet new_bullet(Vector2 pos, Vector2 velocity, float damage = 100,
-                  float radius = 5, float speed = 500, int bounces_left = 3,
+                  float radius = 5, float speed = 1500, int bounces_left = 3,
                   Color color = RED) {
   return {pos, velocity, damage, radius, speed, bounces_left, color};
 }
@@ -19,11 +19,14 @@ void Bullets::SpawnBullet(Player &player, CameraM &cam) {
   bullets.push_back(new_bullet(player.get_pos(), bullet_direction));
 }
 
-void Bullets::Update(Player &player, const Map &map, CameraM &cam,
+void Bullets::Update(Player &player, const Map &map,
                      float deltaTime) {
-  if (IsKeyDown(KEY_SPACE)) {
-    SpawnBullet(player, cam);
-  }
+
+  time_since_last_bullet += deltaTime;
+
+
+  std::println("[DEBUG]\t\tBULLET :: time since last : {:.3f}",
+               time_since_last_bullet);
 
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Vector2 old_pos = bullets[i]._pos;

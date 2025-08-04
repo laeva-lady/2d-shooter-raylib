@@ -20,7 +20,7 @@ private:
 
 
 public:
-  Player(Vector2 init_pos = {0, 0}, float init_speed = 5,
+  Player(Vector2 init_pos = {0, 0}, float init_speed = 1,
          float init_run_modifier = 2.5, float size = 25) {
     _pos = init_pos;
     _speed = init_speed;

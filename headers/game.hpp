@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../headers/player.hpp"
+#include "attacks.hpp"
 #include "bullets.hpp"
 #include "camera.hpp"
 #include "map.hpp"
@@ -23,6 +24,8 @@ private:
   void Draw();
 
 public:
+  Attacks *atk;
+
   Game();
   ~Game();
 
