@@ -1,7 +1,6 @@
 #include "../headers/player.hpp"
 #include "../headers/camera.hpp"
 #include "../headers/collisions.h"
-#include <print>
 
 void Player::Draw(CameraM cam) {
   BeginMode2D(cam.get_cam());
@@ -95,5 +94,13 @@ void Player::Update(const Map &map) {
 
   _pos.x += newpos.x;
   _pos.y += newpos.y;
+  _velocity = newpos;
 }
 const Vector2 Player::get_pos() { return _pos; }
+
+const Vector2 Player::get_velocity() { return _velocity; }
+
+float Player::get_angle(CameraM &cam) {
+  auto out = GetScreenToWorld2D(GetMousePosition(), cam.get_cam());
+  return atan2(out.y - _pos.y, out.x - _pos.x);
+}

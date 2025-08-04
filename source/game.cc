@@ -11,6 +11,7 @@ Game::Game() {
   player = new Player();
   cam = new CameraM();
   map = new Map("assets/map.txt");
+  mbullets = new Bullets();
 }
 
 Game::~Game() { CloseWindow(); }
@@ -22,6 +23,12 @@ void Game::Run() {
   }
 }
 
+void Game::Update() {
+  player->Update(*map);
+  cam->Update();
+  mbullets->Update(*player, *map, *cam);
+}
+
 void Game::Draw() {
   BeginDrawing();
   ClearBackground(BLACK);
@@ -30,12 +37,9 @@ void Game::Draw() {
 
   player->Draw(*cam);
   cam->Draw(player);
+  mbullets->Draw(*cam);
   UI::Draw(player);
 
   EndDrawing();
 }
 
-void Game::Update() {
-  player->Update(*map);
-  cam->Update();
-}

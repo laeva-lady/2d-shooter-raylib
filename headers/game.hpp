@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../headers/player.hpp"
+#include "bullets.hpp"
 #include "camera.hpp"
 #include "map.hpp"
 #include <raylib.h>
@@ -17,6 +18,7 @@ private:
   Player *player;
   CameraM *cam;
   Map *map;
+  Bullets *mbullets;
 
   void Draw();
 

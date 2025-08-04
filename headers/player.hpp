@@ -11,11 +11,13 @@ class Player {
 
 private:
   Vector2 _pos;
+  Vector2 _velocity;
   float _size;
   std::deque<Vector2> _trace;
   int _trace_length = 50;
   float _speed;
   float _run_speed_modifier;
+
 
 public:
   Player(Vector2 init_pos = {0, 0}, float init_speed = 5,
@@ -29,4 +31,6 @@ public:
   void Draw(CameraM cam);
   void Update(const Map &map);
   const Vector2 get_pos();
+  float get_angle(CameraM &cam);
+  const Vector2 get_velocity();
 };
