@@ -1,10 +1,11 @@
 #pragma once
 
 #include "../headers/player.hpp"
-#include "attacks.hpp"
 #include "bullets.hpp"
 #include "camera.hpp"
 #include "map.hpp"
+#include "waves-atk.hpp"
+#include "attacks.hpp"
 #include <raylib.h>
 
 struct Size {
@@ -16,10 +17,12 @@ class Game {
 private:
   const Size DefaultScreenSize = {700, 1200};
 
+public:
   Player *player;
   CameraM *cam;
   Map *map;
   Bullets *mbullets;
+  WaveATKs *waveAtk;
 
   void Draw();
 

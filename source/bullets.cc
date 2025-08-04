@@ -7,7 +7,7 @@
 #include <raymath.h>
 
 Bullet new_bullet(Vector2 pos, Vector2 velocity, float damage = 100,
-                  float radius = 5, float speed = 1500, int bounces_left = 3,
+                  float radius = 5, float speed = 1500, int bounces_left = 1,
                   Color color = RED) {
   return {pos, velocity, damage, radius, speed, bounces_left, color};
 }
@@ -23,6 +23,7 @@ void Bullets::Update(Player &player, const Map &map,
                      float deltaTime) {
 
   time_since_last_bullet += deltaTime;
+  if (time_since_last_bullet > BIG_number) time_since_last_bullet = 0;
 
 
   std::println("[DEBUG]\t\tBULLET :: time since last : {:.3f}",

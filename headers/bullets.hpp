@@ -5,6 +5,8 @@
 #include <raylib.h>
 #include <vector>
 
+#include "../headers/attacks.hpp"
+
 struct Bullet {
   Vector2 _pos;
   Vector2 _velocity;

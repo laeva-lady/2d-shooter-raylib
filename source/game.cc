@@ -2,6 +2,7 @@
 
 #include "../headers/game.hpp"
 #include "../headers/ui.hpp"
+#include "../headers/attacks.hpp"
 
 Game::Game() {
   InitWindow(DefaultScreenSize.width, DefaultScreenSize.height,
@@ -13,6 +14,7 @@ Game::Game() {
   map = new Map("assets/map.txt");
   mbullets = new Bullets();
   atk = new Attacks();
+  waveAtk = new WaveATKs();
 
   UI::Init();
 }
@@ -34,8 +36,9 @@ void Game::Update() {
 
   player->Update(*map);
   cam->Update();
-  atk->Update(*mbullets, *player, *cam);
+  atk->Update(*this);
   mbullets->Update(*player, *map, dt);
+  waveAtk->Update();
 }
 
 void Game::Draw() {
@@ -44,9 +47,10 @@ void Game::Draw() {
 
   map->Draw(cam->get_cam());
 
+  mbullets->Draw(*cam);
+  waveAtk->Draw(*cam);
   player->Draw(*cam);
   cam->Draw(player);
-  mbullets->Draw(*cam);
   UI::Draw(*this, *player);
 
   EndDrawing();
